@@ -75,6 +75,10 @@ all_sprites.add(player)
 
 running = True
 
+# 设置FPS，也可以防止太高的FPS，使一个按键Loop中响应太多次，导致移动太快。
+FPS = 60
+fpsclock = pygame.time.Clock()
+
 while running:
     for event in pygame.event.get():
         if event.type == KEYDOWN:
@@ -97,3 +101,4 @@ while running:
         player.kill()
 
     pygame.display.flip()
+    fpsclock.tick(FPS)

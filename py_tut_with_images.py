@@ -43,7 +43,7 @@ class Enemy(pygame.sprite.Sprite):
         self.image.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.image.get_rect(
             center=(random.randint(820, 900), random.randint(0, 600)))
-        self.speed = random.randint(5, 20)
+        self.speed = random.randint(3, 8)
 
     def update(self):
         self.rect.move_ip(-self.speed, 0)
@@ -61,7 +61,7 @@ class Cloud(pygame.sprite.Sprite):
         )
 
     def update(self):
-        self.rect.move_ip(-5, 0)
+        self.rect.move_ip(-2, 0)
         if self.rect.right < 0:
             self.kill()
 
@@ -90,7 +90,9 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
 
 running = True
-
+# 设置FPS，也可以防止太高的FPS，使一个按键Loop中响应太多次，导致移动太快。
+FPS = 60
+fpsclock = pygame.time.Clock()
 while running:
     for event in pygame.event.get():
         if event.type == KEYDOWN:
@@ -118,3 +120,4 @@ while running:
         player.kill()
 
     pygame.display.flip()
+    fpsclock.tick(FPS)
