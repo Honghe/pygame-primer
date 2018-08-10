@@ -74,7 +74,7 @@ screen = pygame.display.set_mode((800, 600))
 
 # Create a custom event for adding a new enemy.
 ADDENEMY = pygame.USEREVENT + 1
-pygame.time.set_timer(ADDENEMY, 250)
+pygame.time.set_timer(ADDENEMY, 500)
 ADDCLOUD = pygame.USEREVENT + 2
 pygame.time.set_timer(ADDCLOUD, 1000)
 
